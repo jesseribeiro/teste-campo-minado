@@ -78,4 +78,8 @@ public class Tabuleiro {
         }
         return v;
     }
+    
+    public static void main(String args[]) {
+        Tabuleiro tabuleiro = new Tabuleiro();
+    }
 }
