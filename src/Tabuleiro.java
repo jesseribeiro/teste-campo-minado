@@ -25,7 +25,7 @@ public class Tabuleiro {
         return c;
     }
 
-    public void sorteiaMinas(int a, int b) {
+    public void insereMina(int a, int b) {
         m[a][b] = "X";
     }
 

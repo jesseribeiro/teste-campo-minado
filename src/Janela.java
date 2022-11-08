@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 public class Janela extends JFrame implements ActionListener {
 
-    private Tabuleiro t = new Tabuleiro();
+    private Tabuleiro tab = new Tabuleiro();
     private Botao botao[];
 
     public Janela() {
@@ -14,15 +14,15 @@ public class Janela extends JFrame implements ActionListener {
         Container container = getContentPane();
         container.setLayout(new GridLayout(15,15));
 
-        t.preencheMatriz();
-        t.imprimeMatriz();
+        tab.preencheMatriz();
+        tab.imprimeMatriz();
 
-        botao = new Botao[totalBotoes(t)];
+        botao = new Botao[totalBotoes(tab)];
 
         int i=0;
         int array[] = new int[2];
-        for (int x=1; x<(t.getLinhas()-1);x++) {
-            for (int j=1; j<(t.getColunas()-1);j++) {
+        for (int x=1; x<(tab.getLinhas()-1);x++) {
+            for (int j=1; j<(tab.getColunas()-1);j++) {
                 array[0]=x;
                 array[1]=j;
                 botao[i] = new Botao(array);
@@ -48,37 +48,37 @@ public class Janela extends JFrame implements ActionListener {
         int[] vetor = b.getArray();
 
         b.setText("");
-        t.sorteiaMinas(vetor[0],vetor[1]);
+        tab.insereMina(vetor[0],vetor[1]);
         b.setIcon(bomba);
 
         setaTotalBombas(vetor[0], vetor[1]);
 
-        t.imprimeMatriz();
+        tab.imprimeMatriz();
     }
 
     public void setaTotalBombas (int x, int y) {
-        if (!t.retornaValor(x-1,y-1).equalsIgnoreCase("X")) {
+        if (!tab.retornaValor(x-1,y-1).equalsIgnoreCase("X")) {
             printVizinho(x-1, y-1);
         }
-        if (!t.retornaValor(x-1, y).equalsIgnoreCase("X")) {
+        if (!tab.retornaValor(x-1, y).equalsIgnoreCase("X")) {
             printVizinho(x-1, y);
         }
-        if (!t.retornaValor(x-1, y+1).equalsIgnoreCase("X")) {
+        if (!tab.retornaValor(x-1, y+1).equalsIgnoreCase("X")) {
             printVizinho(x-1, y+1);
         }
-        if (!t.retornaValor(x, y-1).equalsIgnoreCase("X")) {
+        if (!tab.retornaValor(x, y-1).equalsIgnoreCase("X")) {
             printVizinho(x, y-1);
         }
-        if (!t.retornaValor(x, y+1).equalsIgnoreCase("X")) {
+        if (!tab.retornaValor(x, y+1).equalsIgnoreCase("X")) {
             printVizinho(x, y+1);
         }
-        if (!t.retornaValor(x+1, y-1).equalsIgnoreCase("X")) {
+        if (!tab.retornaValor(x+1, y-1).equalsIgnoreCase("X")) {
             printVizinho(x+1, y-1);
         }
-        if (!t.retornaValor(x+1, y).equalsIgnoreCase("X")) {
+        if (!tab.retornaValor(x+1, y).equalsIgnoreCase("X")) {
             printVizinho(x+1, y);
         }
-        if (!t.retornaValor(x+1, y+1).equalsIgnoreCase("X")) {
+        if (!tab.retornaValor(x+1, y+1).equalsIgnoreCase("X")) {
             printVizinho(x+1, y+1);
         }
     }
@@ -88,7 +88,7 @@ public class Janela extends JFrame implements ActionListener {
         int numeroBombas;
         Botao b = findBotao(x, y);
         if (b != null) {
-            numeroBombas = t.verificaVizinho(x, y);
+            numeroBombas = tab.verificaVizinho(x, y);
             if (numeroBombas > 0) {
                 b.setText(String.valueOf(numeroBombas));
                 b.setForeground(cores.verificaCor(numeroBombas));
