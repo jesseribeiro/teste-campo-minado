@@ -13,4 +13,6 @@ Existem duas formas:
  - abrir pasta dir e executar o arquivo .jar
  
  - acessar a pasta dist via comando e dar o seguinte comando: 
- '''java -jar .\Projeto_Campo_Minado.jar'''
+'''
+java -jar .\Projeto_Campo_Minado.jar
+'''
